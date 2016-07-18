@@ -9,10 +9,11 @@ const API_KEY = 'AIzaSyClytfdi9jGJg4AUGWKHDr0jf_eUc-MMns';
 const App = () => {
   return (
     <div>
-      <SearchBar />
+      <SearchBar/>
     </div>
   );
 }
 
 // Take the component HTML and put it in the DOM
-ReactDOM.render(<App />, document.querySelector('.container'));
+ReactDOM.render(
+  <App/>, document.querySelector('.container'));
