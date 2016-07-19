@@ -5,9 +5,13 @@ import {bindActionCreators} from 'redux';
 
 class BookList extends Component {
   renderList() {
+    console.log(this.props);
     return this.props.books.map(book => {
       return (
-        <li key={book.title} className="list-group-item">{book.title}</li>
+
+        <li onClick={() => this.props.selectBook(book)} key={book.title} className="list-group-item">
+          {book.title}
+        </li>
       );
     });
   }
@@ -27,7 +31,7 @@ function mapStateToProps(state) {
   return {books: state.books};
 }
 
-function mapDispathToProps(dispatch) {
+function mapDispatchToProps(dispatch) {
   // Whenever selectBook is called, the result must be passed to all reducers
   return bindActionCreators({
     selectBook: selectBook
@@ -36,4 +40,4 @@ function mapDispathToProps(dispatch) {
 
 // Promote BookList from a component to a container - it needs to know about
 // the new dispatch method, selectBook.
-export default connect(mapStateToProps, mapDispathToProps)(BookList);
+export default connect(mapStateToProps, mapDispatchToProps)(BookList);
